@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #081831;
+}
+
+header {
+    height: 60vw;
+    margin: auto;
+    background: url(imagens/eyes.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+h2 {
+    text-align: center;
+    color: white;
+}
+
+div {
+    display: flex;
+    width: 290px;
+    height: 290px;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    margin: auto;
+    border: 5px solid #94F1FB;
+    margin-top: 10px;
+}
+
+img {
+    flex: auto;
+    width: 290px;
+}
+
+nav {
+    background-color: #002c74;
+    display: flex;
+    justify-content: space-around;
+    margin: 8px;
+    margin-bottom: 100px;
+}
+
+a#bot {
+    text-decoration: none;
+}
+
+a#log {
+    flex: 0 1 70px;
+    text-align: center;
+    background-color: #0362FB;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+a#log:hover {
+    background-color: #003791;
+    transition: 0.5s;
+}
+
+input[type=button] {
+    text-align: center;
+    margin: auto;
+    display: block;
+    margin-top: 8px;
+    width: 200px;
+    height: 35px;
+    border-radius: 10px;
+    color: white;
+    background-color: #0362FB;
+    cursor: pointer;
+}
+
+input[type=button]:hover {
+    background-color: #002c74;
+    color: white;
+    transition: 0.5s;
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Criação de Conta</title>
+    <link rel="shortcut icon" href="imagens/favico.avif" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+            transition: 0.7s;
+        }
+        .toggle-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .toggle-link a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+        .toggle-link a:hover {
+            text-decoration: underline;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+        
+        a#sty {
+            background-color: #333;
+            color: white;
+            padding: 7px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: auto;
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="loginForm">
+        <h2>Login</h2>
+        <form onsubmit="return loginValidation(event)">
+            <input type="email" id="loginEmail" placeholder="E-mail" required>
+            <input type="password" id="loginPassword" placeholder="Senha" required>
+            <button type="submit" onclick="entrar()">Entrar</button>
+            <div class="toggle-link">
+                <span>Não tem conta? <a href="javascript:void(0)" onclick="toggleForm('register')">Criar conta</a></span>
+            </div>
+            <div id="loginError" class="error"></div>
+        </form>
+        <p>
+            <a id="sty" href="index.html">Voltar</a>
+        </p>
+    </div>
+
+    <div class="container" id="registerForm" style="display: none;">
+        <h2>Criar Conta</h2>
+        <form onsubmit="return registerValidation(event)">
+            <input type="text" id="name" placeholder="Nome" required>
+            <input type="email" id="registerEmail" placeholder="E-mail" required>
+            <input type="password" id="registerPassword" placeholder="Senha" required>
+            <input type="password" id="confirmPassword" placeholder="Confirmar Senha" required>
+            <button type="submit">Criar Conta</button>
+            <div class="toggle-link">
+                <span>Já tem conta? <a href="javascript:void(0)" onclick="toggleForm('login')">Fazer login</a></span>
+            </div>
+            <div id="registerError" class="error"></div>
+        </form>
+    </div>
+    <script>
+        // Função para alternar entre as telas de login e criação de conta
+        function toggleForm(formType) {
+            if (formType === 'login') {
+                document.getElementById('loginForm').style.display = 'block';
+                document.getElementById('registerForm').style.display = 'none';
+            } else if (formType === 'register') {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('registerForm').style.display = 'block';
+                
+                }
+            }
+    
+
+        // Função de validação do login
+        function loginValidation(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const error = document.getElementById('loginError');
+            error.textContent = '';
+
+            if (email === '' || password === '') {
+                error.textContent = 'Preencha todos os campos.';
+                return false;
+            }
+
+            // Aqui você pode adicionar lógica de autenticação
+            alert('Login realizado com sucesso!');
+            return true;
+        }
+
+        // Função de validação de criação de conta
+        function registerValidation(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            const error = document.getElementById('registerError');
+            error.textContent = '';
+
+            if (name === '' || email === '' || password === '' || confirmPassword === '') {
+                error.textContent = 'Preencha todos os campos.';
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                error.textContent = 'As senhas não coincidem.';
+                return false;
+            }
+
+            // Aqui você pode adicionar lógica para registrar o usuário
+            alert('Conta criada com sucesso!');
+            toggleForm('login');
+            return true;
+        }
+    </script>
+
+</body>
+</html>
